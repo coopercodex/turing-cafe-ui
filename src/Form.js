@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from "react";
+import React, { useState } from "react";
 
 const Form = ({ addRes }) => {
 const [name, setName] = useState('');
@@ -9,7 +9,14 @@ const [number, setNumber] = useState(0);
 const handleChange = (event) => {
   event.preventDefault();
   const newResy = ({id: Date.now(), name, date, time, number})
-  addRes(newResy)
+  addRes(newResy);
+
+  fetch('http://localhost:3001/api/v1/reservations', {
+  method: 'POST', 
+  headers: {"Content-Type": "application/json"},
+  body: JSON.stringify(newResy),
+  })
+
   clearFields();
 }
 const clearFields = () => {
