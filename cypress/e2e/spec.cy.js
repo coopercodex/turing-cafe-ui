@@ -14,6 +14,7 @@ describe('home page', () => {
       cy.contains('h1','Turing Cafe Reservations')
     })
 
+    
     it('should not take user to different page', () => {
       cy.get().should('not.exist','h5')
     })
