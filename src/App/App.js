@@ -18,6 +18,9 @@ class App extends Component {
 
   // }
 
+  addRes = (newRes) => {
+      this.setState({reservations:[...this.state.reservations, newRes]})
+  }
  
 
   render() {
@@ -28,7 +31,7 @@ class App extends Component {
         </div> */}
         {/* <div className='resy-container'>
         </div> */}
-        <Form reservations={this.state.reservations} />
+        <Form reservations={this.state.reservations} addRes={this.addRes}/>
         <Reservations reservations={this.state.reservations} />
       </div>
     )
