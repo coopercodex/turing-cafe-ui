@@ -14,10 +14,17 @@ class App extends Component {
     }
   }
 
-  // componentDidMount = () => {
+  componentDidMount = () => {
+    fetch('http://localhost:3001/api/v1/reservations')
+    .then(response => response.json())
+    .then(data => {
+      this.setState({reservations: data})
+    })
+  }
 
-  // }
-
+  addRes = (newRes) => {
+      this.setState({reservations:[...this.state.reservations, newRes]})
+  }
  
 
   render() {
@@ -28,7 +35,7 @@ class App extends Component {
         </div> */}
         {/* <div className='resy-container'>
         </div> */}
-        <Form reservations={this.state.reservations} />
+        <Form reservations={this.state.reservations} addRes={this.addRes}/>
         <Reservations reservations={this.state.reservations} />
       </div>
     )
